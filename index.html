@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordly | Dictionary</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">Wordly<span>.</span></div>
+            <nav>
+                <button id="homeBtn" class="nav-btn active">
+                    <i class="fa-solid fa-house"></i> Home
+                </button>
+                <button id="myWordsBtn" class="nav-btn">
+                    <i class="fa-solid fa-book-bookmark"></i> My Library
+                </button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-box">
+                    <input type="text" id="wordInput" placeholder="Search a word...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <p id="errorMessage" class="error-text"></p>
+            </header>
+
+            <section id="initialState" class="state-container">
+                <div class="welcome-msg">
+                    <i class="fa-solid fa-spell-check"></i>
+                    <h2>Search for a word</h2>
+                    <p>Discover definitions, examples, and synonyms instantly.</p>
+                </div>
+            </section>
+
+            <section id="resultWrapper" class="state-container hidden">
+                <div class="word-card">
+                    <div class="word-header">
+                        <div>
+                            <h1 id="displayWord"></h1>
+                            <div class="sub-info">
+                                <span id="partOfSpeech"></span>
+                                <span id="phonetic"></span>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <button id="audioBtn" title="Play Sound">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                            <button id="saveBtn" class="bookmark-btn" title="Save Word">
+                                <i class="fa-solid fa-bookmark"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="tabs">
+                        <button id="defTab" class="tab-btn active">Definition</button>
+                        <button id="exTab" class="tab-btn">Example</button>
+                        <button id="synTab" class="tab-btn">Synonyms</button>
+                    </div>
+
+                    <div class="tab-content">
+                        <p id="meaningText" class="fade-in-text"></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="bookOverlay" class="overlay hidden">
+        <div class="animation-wrapper">
+            <div class="book">
+                <div class="page"></div>
+                <div class="page"></div>
+                <div class="page"></div>
+            </div>
+            <p id="writingWord"></p>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

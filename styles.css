@@ -1,0 +1,282 @@
+:root {
+    --primary: #2d3436;
+    --accent: #6c5ce7;
+    --bg: #f9f9f9;
+    --card: #ffffff;
+    --text-main: #2d3436;
+    --text-muted: #636e72;
+    --border: #dfe6e9;
+    --success: #00b894;
+    --error: #d63031;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Layout --- */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 260px;
+    background: var(--primary);
+    color: white;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    color: white;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: #b2bec3;
+    padding: 1rem;
+    text-align: left;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.nav-btn i {
+    margin-right: 10px;
+}
+
+.nav-btn.active, .nav-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- Search --- */
+.top-bar {
+    margin-bottom: 3rem;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 1.2rem 1.5rem 1.2rem 3.5rem;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    outline: none;
+}
+
+.search-box i {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.error-text {
+    color: var(--error);
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* --- Result Card --- */
+.word-card {
+    background: var(--card);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.word-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+#displayWord {
+    font-size: 3.5rem;
+    font-weight: 800;
+}
+
+.sub-info {
+    margin-top: 5px;
+}
+
+#partOfSpeech {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+#phonetic {
+    color: var(--text-muted);
+}
+
+.actions button {
+    background: #f1f2f6;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: 0.2s;
+}
+
+.bookmark-btn.saved {
+    background: var(--accent);
+    color: white;
+}
+
+/* --- Tabs --- */
+.tabs {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding-bottom: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-muted);
+    border-bottom: 3px solid transparent;
+}
+
+.tab-btn.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.tab-content {
+    min-height: 100px;
+}
+
+.fade-in-text {
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Library Item Styling --- */
+.saved-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #fdfdfd;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.delete-btn {
+    color: var(--error);
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* --- Book Animation Overlay --- */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.animation-wrapper {
+    text-align: center;
+    color: white;
+}
+
+#writingWord {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: 300;
+    white-space: pre-line;
+}
+
+.book {
+    width: 100px;
+    height: 140px;
+    background: var(--accent);
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    border-radius: 5px;
+}
+
+.book.open {
+    transform: rotateY(-30deg);
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.book.open .page:nth-child(1) { transform: rotateY(-140deg); }
+.book.open .page:nth-child(2) { transform: rotateY(-150deg); transition-delay: 0.1s; }
+.book.open .page:nth-child(3) { transform: rotateY(-160deg); transition-delay: 0.2s; }
